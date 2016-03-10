@@ -114,25 +114,26 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
-//            tv1.setText(result);
             Log.v("MainActivity", "Response is: " + result);
-            HashMap<String, Object> meMap=new HashMap<>();
+            HashMap<String, Object> meMap= new HashMap<>();
+            Model model = new Model();
             try {
                 JSONObject jsonObject = new JSONObject(result);
-                Iterator<String> iterator = jsonObject.keys();
-                while (iterator.hasNext()) {
-                    String key = iterator.next();
-                    meMap.put(key, jsonObject.get(key));
-                }
+                model.setAwesome(jsonObject.getString("awesome"));
+//                Iterator<String> iterator = jsonObject.keys();
+//                while (iterator.hasNext()) {
+//                    String key = iterator.next();
+//                    meMap.put(key, jsonObject.get(key));
+//                }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
-            mFirst.setText(meMap.get("hey").toString());
-            mSecond.setText(meMap.get("anumber").toString());
-            mThird.setText(meMap.get("anobject").toString());
-            mFourth.setText(meMap.get("bogus").toString());
-            mFifth.setText(meMap.get("link").toString());
+            mFirst.setText(model.getAwesome());
+//            mSecond.setText(meMap.get("anumber").toString());
+//            mThird.setText(meMap.get("anobject").toString());
+//            mFourth.setText(meMap.get("bogus").toString());
+//            mFifth.setText(meMap.get("link").toString());
 
 //                ArrayAdapter adapter = new ArrayAdapter<String>(MainActivity.this, R.layout.list, );
 //                ListView listView = (ListView) findViewById(R.id.List_view);

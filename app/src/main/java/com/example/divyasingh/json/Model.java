@@ -20,7 +20,6 @@ public class Model {
 
     private String japanese;
 
-
     public String getHey() {
         return hey;
     }
